@@ -1,11 +1,13 @@
 import axios from 'axios';
 import { Contacts } from './handlers/contacts';
 import { Objects } from './handlers/objects';
+import { Messages } from './handlers/messages';
+import { Notes } from './handlers/notes';
 
 const DEFAULT_API_GATEWAY = "https://api.ontraport.com/1";
 const DEFAULT_TIMEOUT = 30000;
 
-interface OntraportSettings {
+export interface OntraportSettings {
   apiAppId: string;
   apiSecret: string;
   gateway?: string;
@@ -17,8 +19,10 @@ export class OntraportJS {
   API_SECRET = null;
   API_GATEWAY = null;
   
-  public static contacts: Contacts = null;
-  public static objects: Objects = null;
+  static contacts: Contacts;
+  static objects: Objects;
+  static messages: Messages;
+  static notes: Notes;
   
   constructor(config: OntraportSettings) {
     this.API_APP_ID = process.env.ONTRA_API_APP_ID || config.apiAppId;
@@ -34,7 +38,9 @@ export class OntraportJS {
       }
     });
 
-    OntraportJS.contacts = new Contacts(axiosIntance, this);
-    OntraportJS.objects = new Objects(axiosIntance, this);
+    OntraportJS.contacts = new Contacts(axiosIntance);
+    OntraportJS.objects = new Objects(axiosIntance);
+    OntraportJS.messages = new Messages(axiosIntance);
+    OntraportJS.notes = new Notes(axiosIntance);
   }
 }

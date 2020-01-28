@@ -30,7 +30,10 @@ export enum BulkSmsStatus {
     'Hard_Bounce' = -2,
 }
 
+export type SortDirection = 'asc' | 'ASC' | 'DESC' | 'desc';
+
 export interface Contact {
+    id?: number;
     firstname?: string;
     lastname?: string;
     email: string;
@@ -55,4 +58,19 @@ export interface Contact {
     website?: string;
     bulk_mail?: BulkMailStatus;
     bulk_sms?: BulkSmsStatus;
+}
+
+export interface FindContactRequest {
+    ids?: String[],
+    start?: number;
+    range?: number;
+    sort?: string;
+    sortDir?: SortDirection;
+    condition?: string;
+    search?: string;
+    searchNotes?: string;
+    group_id?: number;
+    performAll?: number;
+    externs?: string[];
+    listFields?: String[];
 }

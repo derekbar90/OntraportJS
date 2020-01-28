@@ -1,14 +1,10 @@
 import { AxiosInstance } from 'axios';
 import { HttpClient } from '../http';
-import { OntraportJS } from '../main';
 import { AddTagRequest, AddTagByNameRequest } from '../types/object';
 
 export class Objects extends HttpClient {  
-  context: OntraportJS = null; 
-  
-  constructor(axios: AxiosInstance, context: OntraportJS) {
+  constructor(axios: AxiosInstance) {
     super(axios);
-    context = context;
   }
 
   public async addTag(request: AddTagRequest) {

@@ -27,6 +27,7 @@ export class HttpClient {
       });
       return response.data;
     } catch (e) {
+      console.log(e.request)
       throw new OntraportRequestError(url, e.status, e.message);
     }
     
@@ -35,32 +36,32 @@ export class HttpClient {
   /**
    * get
    */
-  public async get(url: string, payload: any) {
+  protected async get(url: string, payload: any) {
     const { data } = await this.request('get', url, payload);
     return data;
   }
   
-  public async getForm(url: string, payload: any) {
+  protected async getForm(url: string, payload: any) {
     const { data } = await this.request('get', url, payload ? qs.stringify(payload) : null, {'content-type': 'application/x-www-form-urlencoded'});
     return data;
   }
   
-  public async postForm(url: string, payload: any) {
+  protected async postForm(url: string, payload: any) {
     const { data } = await this.request('post', url, payload ? qs.stringify(payload) : null, {'content-type': 'application/x-www-form-urlencoded'});
     return data;
   }
 
-  public async post(url: string, payload: any) {
+  protected async post(url: string, payload: any) {
     const { data } = await this.request('post', url, payload);
     return data;
   }
 
-  public async putForm(url: string, payload: any) {
+  protected async putForm(url: string, payload: any) {
     const { data } = await this.request('put', url, payload ? qs.stringify(payload) : null, {'content-type': 'application/x-www-form-urlencoded'});
     return data;
   }
 
-  public async put(url: string, payload: any) {
+  protected async put(url: string, payload: any) {
     const { data } = await this.request('put', url, payload);
     return data;
   }

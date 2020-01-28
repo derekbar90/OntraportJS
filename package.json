@@ -1,9 +1,26 @@
 {
-  "name": "OntraportJS",
-  "version": "0.0.1",
-  "description": "Ontraport Client for Javascript written in Typescript",
+  "name": "@thesatoshicompany/ontraport-js",
+  "version": "0.1.8",
+  "author": "Derek Barrera <derekbarrera@gmail.com>",
+  "license": "Apache-2.0",
+  "description": "Ontraport Client for Javascript written in Typescript", 
   "engines": {
     "node": ">= 12.13 <13"
+  },
+  "main": "build/src/main.js",
+  "scripts": {
+    "start": "node --inspect -r ts-node/register src/index.ts",
+    "clean": "rimraf coverage build tmp",
+    "build": "tsc -p tsconfig.release.json",
+    "build:watch": "tsc -w -p tsconfig.release.json",
+    "lint": "eslint . --ext .ts,.tsx",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "qs": "^6.9.1",
+    "tslib": "~1.10.0"
   },
   "devDependencies": {
     "@types/jest": "~24.0.25",
@@ -20,21 +37,5 @@
     "ts-node": "^8.6.2",
     "tsutils": "~3.17.0",
     "typescript": "~3.7.4"
-  },
-  "scripts": {
-    "start": "node --inspect -r ts-node/register src/index.ts",
-    "clean": "rimraf coverage build tmp",
-    "build": "tsc -p tsconfig.release.json",
-    "build:watch": "tsc -w -p tsconfig.release.json",
-    "lint": "eslint . --ext .ts,.tsx",
-    "test": "jest --coverage",
-    "test:watch": "jest --watch"
-  },
-  "author": "Derek Barrera <derekbarrera@gmail.com>",
-  "license": "Apache-2.0",
-  "dependencies": {
-    "axios": "^0.19.2",
-    "qs": "^6.9.1",
-    "tslib": "~1.10.0"
   }
 }

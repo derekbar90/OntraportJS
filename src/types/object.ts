@@ -100,3 +100,7 @@ export interface AddTagByNameRequest {
   group_id?: number;
   performAll?: Binary;
 }
+
+export interface GenericObject {
+  objectID: ObjectType
+}
